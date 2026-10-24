@@ -69,9 +69,11 @@ hardcode the prefix.
 Use the built-in browser tools (`mcp__Claude_Browser__*`). Use another browser
 only if the user asks for it.
 
-1. Open `https://www.semrush.com/analytics/overview/`. A "Log In" button or a
-   "Free Keyword Checker" page means logged out: ask the user to log in
-   themselves and wait. Never type an email, password, code, or captcha.
+1. Open `https://www.semrush.com/analytics/overview/`. A "Log In" button
+   means logged out: ask the user to log in themselves and wait. Never type an
+   email, password, code, or captcha. Judge by the page body after it loads,
+   not the tab title: logged-in pages first show marketing titles such as
+   "Free Keyword Checker" and switch once data loads.
 2. Open the report by URL, replacing `<q>` (URL-encoded) and `<db>`:
 
    | Command | URL |
@@ -91,7 +93,9 @@ only if the user asks for it.
    controls. Wait for tables to finish loading before reading.
 4. "Open SERP" opens a tab Claude cannot drive. Check a SERP by searching
    Google directly in the built-in browser.
-5. Note any daily-limit banner. The web account has its own report quota.
+5. Note any daily-limit banner and the usage counter shown on the report
+   (for example `5/250` on Keyword Overview). The web account has its own
+   report quota.
 
 ### 3. Nothing worked
 
