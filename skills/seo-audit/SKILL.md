@@ -170,6 +170,10 @@ Write `{domain}-audit/audit-data.json` with this shape so `"${CLAUDE_PLUGIN_ROOT
 
 If DataForSEO MCP tools are available, spawn the `seo-dataforseo` agent alongside existing subagents to enrich the audit with live data: real SERP positions, backlink profiles with spam scores, on-page analysis (Lighthouse), business listings, and AI visibility checks (ChatGPT scraper, LLM mentions).
 
+## Semrush Integration (Optional)
+
+If a Semrush connector is available, or the built-in browser is logged in to Semrush, follow the `seo-semrush` skill in the main session before spawning agents: fetch `overview`, `organic`, and `backlinks` for the audited domain, then spawn the `seo-semrush` agent with the saved JSON paths. Subagents never fetch Semrush data themselves. If no route works, the audit continues without Semrush numbers and says so.
+
 ## Google API Integration (Optional)
 
 If Google API credentials are configured (`"${CLAUDE_PLUGIN_ROOT}/scripts/claude-seo" run google_auth.py --check`), spawn the `seo-google` agent to enrich the audit with real Google field data: CrUX Core Web Vitals (replaces lab-only estimates), GSC URL indexation status, search performance (clicks, impressions, CTR), and GA4 organic traffic trends. The Performance (CWV) category score benefits most from field data.

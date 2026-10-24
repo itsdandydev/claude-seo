@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 AGENT_MIRRORS = [
     ("agents/seo-dataforseo.md", "extensions/dataforseo/agents/seo-dataforseo.md"),
     ("agents/seo-image-gen.md", "extensions/banana/agents/seo-image-gen.md"),
+    ("agents/seo-semrush.md", "extensions/semrush/agents/seo-semrush.md"),
 ]
 
 # The DataForSEO skill has no install-specific content, so the whole folder
@@ -60,6 +61,12 @@ def test_dataforseo_skill_mirror_is_identical():
         if (DATAFORSEO_CORE / name).read_bytes() != (DATAFORSEO_EXT / name).read_bytes()
     ]
     assert not drifted, f"seo-dataforseo copies have drifted: {drifted}"
+
+
+def test_semrush_skill_mirror_is_identical():
+    core = ROOT / "skills/seo-semrush/SKILL.md"
+    ext = ROOT / "extensions/semrush/skills/seo-semrush/SKILL.md"
+    assert core.read_bytes() == ext.read_bytes(), "seo-semrush copies have drifted"
 
 
 def test_image_gen_references_differ_only_where_documented():

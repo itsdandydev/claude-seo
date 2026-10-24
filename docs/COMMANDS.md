@@ -611,6 +611,26 @@ Full-site crawling and URL discovery via Firecrawl MCP (extension).
 
 ---
 
+### `/seo semrush [command] [target] [db]`
+
+Live Semrush data. Tries the Semrush MCP connector first, then the Semrush web UI in
+the built-in browser (you log in yourself). Results are saved as JSON under
+`~/.cache/claude-seo/semrush/` for the `seo-semrush` agent.
+
+**Prerequisites:** a Semrush connector, or a Semrush login in the built-in browser. No installer.
+
+```
+/seo semrush overview <domain> [db]         # Domain overview
+/seo semrush organic <domain> [db]          # Organic keywords and positions
+/seo semrush keywords <kw1, kw2> [db]       # Volume, KD, CPC, intent
+/seo semrush ideas <seed> [db]              # Keyword ideas
+/seo semrush backlinks <domain>             # Backlink summary
+/seo semrush competitors <domain> [db]      # Organic competitors
+/seo semrush tracking <project>             # Position Tracking results
+```
+
+---
+
 ### `/seo dataforseo [command]`
 
 Live SEO data via DataForSEO MCP server (extension). 23 data commands across 9 API modules, plus cost-tracking commands.
