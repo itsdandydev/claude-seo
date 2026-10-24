@@ -4,9 +4,9 @@
 
 This repository contains **Claude SEO**, a Tier 4 Claude Code skill for comprehensive
 SEO analysis across all industries. It follows the Agent Skills open standard and the
-3-layer architecture (directive, orchestration, execution). 26 sub-skills (22 core +
-1 orchestrator + 1 framework integration + 2 extension mirrors), 19 sub-agents (16 core +
-1 framework integration + 2 extension mirrors), and an extensible reference
+3-layer architecture (directive, orchestration, execution). 27 sub-skills (22 core +
+1 orchestrator + 1 framework integration + 3 extension mirrors), 20 sub-agents (16 core +
+1 framework integration + 3 extension mirrors), and an extensible reference
 system cover technical SEO, content quality,
 schema markup, image optimization, sitemap architecture, AI search optimization,
 local SEO (GBP, citations, reviews, map pack), maps intelligence, semantic topic
@@ -24,7 +24,7 @@ claude-seo/
   .claude-plugin/
     plugin.json                    # Plugin manifest (v2.5.0)
     marketplace.json               # Marketplace catalog for distribution
-  skills/                            # 26 sub-skills (auto-discovered)
+  skills/                            # 27 sub-skills (auto-discovered)
     seo/                           # Main orchestrator skill
       SKILL.md                     # Entry point, routing table, core rules
       references/                  # On-demand knowledge files (13 files)
@@ -65,10 +65,11 @@ claude-seo/
       SKILL.md
       references/                # Marketplace API endpoints
     seo-dataforseo/SKILL.md     # Live SEO data via DataForSEO MCP (extension mirror)
+    seo-semrush/SKILL.md        # Live Semrush data: MCP connector, then web UI (extension mirror)
     seo-image-gen/              # AI image generation for SEO assets (extension mirror)
       SKILL.md
       references/                # Image gen reference files (7 files)
-  agents/                          # 19 subagents (auto-discovered)
+  agents/                          # 20 subagents (auto-discovered)
     seo-technical.md             # Crawlability, indexability, security
     seo-content.md               # E-E-A-T, readability, thin content
     seo-schema.md                # Structured data validation
@@ -82,6 +83,7 @@ claude-seo/
     seo-google.md                # Google API analyst (CrUX, GSC, GA4)
     seo-backlinks.md             # Backlink profile analyst (Moz, Bing, CC, verify)
     seo-dataforseo.md            # DataForSEO data analyst
+    seo-semrush.md               # Semrush data analyst (reads saved JSON)
     seo-image-gen.md             # SEO image audit analyst
     seo-cluster.md               # Semantic clustering analysis
     seo-sxo.md                   # Search experience optimization
@@ -160,6 +162,7 @@ claude-seo/
     bing-webmaster/              # Bing Webmaster and IndexNow install scripts
     profound/                    # Profound MCP install scripts
     seranking/                   # SE Ranking MCP install scripts
+    semrush/                     # Semrush skill + agent (connector or web UI, no installer)
     unlighthouse/                # Unlighthouse install scripts
   docs/                            # Extended documentation
 ```
@@ -193,6 +196,7 @@ claude-seo/
 | `/seo flow [stage] [url\|topic]` | FLOW framework prompts |
 | `/seo google [command] [url]` | Google SEO APIs (GSC, PSI, CrUX, GA4) |
 | `/seo dataforseo [command]` | Live SEO data (extension) |
+| `/seo semrush [command] [target] [db]` | Live Semrush data via connector or web UI (extension) |
 | `/seo image-gen [use-case] <desc>` | AI image generation (extension) |
 | `/seo firecrawl [command] <url>` | Full-site crawling (extension) |
 | `/seo ahrefs [command] <url>` | Backlinks, organic keywords, and content data via the official Ahrefs MCP (extension) |
